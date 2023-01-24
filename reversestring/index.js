@@ -6,9 +6,11 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 const s1 = require("./s1");
+const s2 = require("./s2");
+const s3 = require("./s3");
 
 function reverse(str) {
-  return s1(str);
+  return s3(str);
 }
 
 module.exports = reverse;
