@@ -1,10 +1,3 @@
 // Make use of every array helper
-
-module.exports = (str) => {
-  let arr = str.split("");
-  let result = true;
-  for (let index = 0; index < arr.length; index++) {
-    if (result) return (result = arr[index] === arr[arr.length - index - 1]);
-  }
-  return result;
-};
+module.exports = (str) =>
+  str.split("").every((char, i) => char === str[str.length - i - 1]);

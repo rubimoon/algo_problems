@@ -6,7 +6,11 @@
 // --- Examples:
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
+const s1 = require("./s1");
+const s2 = require("./s2");
 
-function palindrome(str) {}
+function palindrome(str) {
+  return s2(str);
+}
 
 module.exports = palindrome;
