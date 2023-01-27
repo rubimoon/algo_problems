@@ -24,7 +24,9 @@ class LinkedList {
     // this.lengh++;
   }
 
+  // get size based on the definition of linked list
   size() {
+    let counter = 0;
     let node = this.head;
     while (node) {
       counter++;
@@ -32,6 +34,8 @@ class LinkedList {
     }
     return counter;
   }
+
+  getFist() {}
 }
 
 module.exports = { Node, LinkedList };
