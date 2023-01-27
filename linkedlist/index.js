@@ -13,6 +13,7 @@ class LinkedList {
   constructor() {
     // the head store the first node
     this.head = null;
+    this.lengh = 0;
   }
 
   insertFirst(data) {
@@ -20,6 +21,11 @@ class LinkedList {
     const node = new Node(data, this.head);
     // the list must know where the first node is in order to insert the first
     this.head = node;
+    this.lengh++;
+  }
+
+  size() {
+    return this.lengh;
   }
 }
 
