@@ -143,16 +143,8 @@ class LinkedList {
       this.head = new Node(data, this.head);
       return;
     }
-    // when index is out of bound
-    const last = this.getLast();
-    const size = this.size();
-    if (index > size - 1) {
-      last.next = new Node(data);
-      return;
-    }
     // insert to the middle
-    const prev = this.getAt(index - 1);
-    if (!prev) return;
+    const prev = this.getAt(index - 1) || this.getLast();
     prev.next = new Node(data, prev.next);
   }
 }
