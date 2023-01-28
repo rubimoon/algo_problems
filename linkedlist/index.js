@@ -130,12 +130,9 @@ class LinkedList {
   }
 
   insertAt(data, index) {
-    // create a new node with next pointing to null
-    let node = new Node(data);
-
     // when the list is empty
     if (!this.head) {
-      this.head = node;
+      this.head = new Node(data);
       return;
     }
 
@@ -143,24 +140,20 @@ class LinkedList {
 
     // insert to 0
     if (index === 0) {
-      node.next = this.head;
-      this.head = node;
+      this.head = new Node(data, this.head);
       return;
     }
-
     // when index is out of bound
     const last = this.getLast();
     const size = this.size();
     if (index > size - 1) {
-      last.next = node;
+      last.next = new Node(data);
       return;
     }
-
     // insert to the middle
     const prev = this.getAt(index - 1);
     if (!prev) return;
-    node.next = prev.next;
-    prev.next = node;
+    prev.next = new Node(data, prev.next);
   }
 }
 
