@@ -94,7 +94,7 @@ class LinkedList {
       node = node.next;
       counter++;
     }
-    return node;
+    return null;
   }
 }
 
