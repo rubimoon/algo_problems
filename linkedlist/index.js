@@ -99,26 +99,34 @@ class LinkedList {
 
   removeAt(index) {
     if (!this.head) return;
-    let prev;
-    let node = this.head;
-    let counter = 0;
+    // solution1: not using getAt()
 
-    //  a b c
-    //  a
-    // a b
-    while (node) {
-      if (index == counter) {
-        if (node == this.head) {
-          this.head = node.next;
-        }
-        if (!prev) return;
-        prev.next = node.next;
-        return;
-      }
-      prev = node;
-      node = node.next;
-      counter++;
+    // let prev;
+    // let node = this.head;
+    // let counter = 0;
+    // while (node) {
+    //   if (index == counter) {
+    //     prev.next = node.next;
+    //     if (node == this.head) {
+    //       this.head = node.next;
+    //     }
+    //     if (!prev) return;
+    //     return;
+    //   }
+    //   prev = node;
+    //   node = node.next;
+    //   counter++;
+    // }
+
+    // solution2: using getAt()
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
     }
+    const prev = this.getAt(index - 1);
+    if (!prev || !prev.next) return;
+    prev.next = prev.next.next;
   }
 }
 
