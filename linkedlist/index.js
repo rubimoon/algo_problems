@@ -58,21 +58,23 @@ class LinkedList {
   }
 
   removeLast() {
+    if (!this.head) return;
+
     let node = this.head;
     let prev;
-
-    while (node) {
-      if (!node.next) {
-        if (!prev) {
-          this.head = null;
-        } else {
-          prev.next = null;
-        }
-        break;
-      }
+    while (node.next) {
       prev = node;
       node = node.next;
     }
+
+    if (!prev) {
+      this.head = null;
+    } else {
+      prev.next = null;
+    }
+
+    // set node to be null
+    // remove the reference from previous.next
   }
 }
 
