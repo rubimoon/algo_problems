@@ -85,6 +85,17 @@ class LinkedList {
     }
     last.next = new Node(data);
   }
+
+  getAt(index) {
+    let counter = 0;
+    let node = this.head;
+    while (node) {
+      counter++;
+      if (counter == index + 1) return node;
+      node = node.next;
+    }
+    return node;
+  }
 }
 
 module.exports = { Node, LinkedList };
