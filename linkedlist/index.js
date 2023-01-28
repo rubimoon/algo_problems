@@ -76,6 +76,15 @@ class LinkedList {
     // set node to be null
     // remove the reference from previous.next
   }
+
+  insertLast(data) {
+    let last = this.getLast();
+    if (!last) {
+      this.head = new Node(data);
+      return;
+    }
+    last.next = new Node(data);
+  }
 }
 
 module.exports = { Node, LinkedList };
