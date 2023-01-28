@@ -90,9 +90,9 @@ class LinkedList {
     let counter = 0;
     let node = this.head;
     while (node) {
-      counter++;
-      if (counter == index + 1) return node;
+      if (counter == index) return node;
       node = node.next;
+      counter++;
     }
     return node;
   }
