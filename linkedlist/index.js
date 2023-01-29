@@ -58,7 +58,8 @@ class LinkedList {
       return;
     }
     last.next = new Node(data);
-    // this.insertAt(data, this.size() - 1);
+
+    //TODO this.insertAt(data, this.size() - 1);
   }
 
   getAt(index) {
@@ -87,10 +88,9 @@ class LinkedList {
   insertAt(data, index) {
     // when the list is empty
     if (!this.head) {
-      this.head = new Node(data, this.head);
+      this.head = new Node(data);
       return;
     }
-
     // when the list is not empty
 
     // insert to 0
