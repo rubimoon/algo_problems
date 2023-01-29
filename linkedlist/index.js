@@ -17,11 +17,7 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    // the first node becomes the next node
-    const node = new Node(data, this.head);
-    // the list must know where the first node is in order to insert the first
-    this.head = node;
-    this.lengh++;
+    this.insertAt(data, 0);
   }
 
   // get size based on the definition of linked list
@@ -36,16 +32,11 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    return this.getAt(0);
   }
 
   getLast() {
-    let node = this.head;
-    while (node) {
-      if (!node.next) break;
-      node = node.next;
-    }
-    return node;
+    return this.getAt(this.size() - 1);
   }
 
   clear() {
@@ -53,28 +44,11 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (!this.head) return;
-    this.head = this.head.next;
+    this.removeAt(0);
   }
 
   removeLast() {
-    if (!this.head) return;
-
-    let node = this.head;
-    let prev;
-    while (node.next) {
-      prev = node;
-      node = node.next;
-    }
-
-    if (!prev) {
-      this.head = null;
-    } else {
-      prev.next = null;
-    }
-
-    // set node to be null
-    // remove the reference from previous.next
+    this.removeAt(this.size() - 1);
   }
 
   insertLast(data) {
@@ -84,6 +58,7 @@ class LinkedList {
       return;
     }
     last.next = new Node(data);
+    // this.insertAt(data, this.size() - 1);
   }
 
   getAt(index) {
@@ -99,26 +74,6 @@ class LinkedList {
 
   removeAt(index) {
     if (!this.head) return;
-    // solution1: not using getAt()
-
-    // let prev;
-    // let node = this.head;
-    // let counter = 0;
-    // while (node) {
-    //   if (index == counter) {
-    //     prev.next = node.next;
-    //     if (node == this.head) {
-    //       this.head = node.next;
-    //     }
-    //     if (!prev) return;
-    //     return;
-    //   }
-    //   prev = node;
-    //   node = node.next;
-    //   counter++;
-    // }
-
-    // solution2: using getAt()
 
     if (index === 0) {
       this.head = this.head.next;
@@ -132,7 +87,7 @@ class LinkedList {
   insertAt(data, index) {
     // when the list is empty
     if (!this.head) {
-      this.head = new Node(data);
+      this.head = new Node(data, this.head);
       return;
     }
 
