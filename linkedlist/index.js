@@ -102,6 +102,16 @@ class LinkedList {
     const prev = this.getAt(index - 1) || this.getLast();
     prev.next = new Node(data, prev.next);
   }
+
+  forEach(fn) {
+    let node = this.head;
+    let counter = 0;
+    while (node) {
+      fn(node, counter);
+      node = node.next;
+      counter++;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
