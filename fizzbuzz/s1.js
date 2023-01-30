@@ -6,15 +6,15 @@ module.exports = (n) => {
   if (n < 1) return;
 
   let counter = 1;
-  let result;
   while (counter <= n) {
-    if (counter % FIZZ !== 0 && counter % BUZZ !== 0) {
-      console.log(counter);
+    if (counter % FIZZ === 0 && counter % BUZZ === 0) {
+      console.log(FIZZ_STR + BUZZ_STR);
+    } else if (counter % FIZZ === 0) {
+      console.log(FIZZ_STR);
+    } else if (counter % BUZZ === 0) {
+      console.log(BUZZ_STR);
     } else {
-      result = "";
-      if (counter % FIZZ === 0) result = result + FIZZ_STR;
-      if (counter % BUZZ === 0) result = result + BUZZ_STR;
-      console.log(result);
+      console.log(counter);
     }
     counter++;
   }
