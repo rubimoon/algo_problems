@@ -1,14 +1,17 @@
 module.exports = (n) => {
-  let counter = 1;
-  const FIZZ = "fizz";
-  const BUZZ = "buzz";
+  const FIZZ = 3;
+  const BUZZ = 5;
+  const FIZZ_STR = "fizz";
+  const BUZZ_STR = "buzz";
   if (n < 1) return;
 
+  let counter = 1;
   while (counter <= n) {
-    if (counter % 3 === 0 && counter % 5 === 0) console.log(FIZZ + BUZZ);
-    if (counter % 3 === 0 && counter % 5 !== 0) console.log(FIZZ);
-    if (counter % 5 === 0 && counter % 3 !== 0) console.log(BUZZ);
-    if (counter % 3 !== 0 && counter % 5 !== 0) console.log(counter);
+    if (counter % FIZZ === 0 && counter % BUZZ === 0)
+      console.log(FIZZ_STR + BUZZ_STR);
+    if (counter % FIZZ === 0 && counter % BUZZ !== 0) console.log(FIZZ_STR);
+    if (counter % BUZZ === 0 && counter % FIZZ !== 0) console.log(BUZZ_STR);
+    if (counter % FIZZ !== 0 && counter % BUZZ !== 0) console.log(counter);
     counter++;
   }
 };
