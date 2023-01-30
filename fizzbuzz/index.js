@@ -11,7 +11,10 @@
 //   fizz
 //   4
 //   buzz
+const s1 = require("./s1");
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+  return s1(n);
+}
 
 module.exports = fizzBuzz;
