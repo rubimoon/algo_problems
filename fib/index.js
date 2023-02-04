@@ -11,20 +11,15 @@
 function fib(n) {
   let f0 = 0;
   let f1 = 1;
-  let fi = 0;
+  let fibArr = [f0, f1];
 
-  let fibArr = [];
-  for (let i = 0; i <= n; i++) {
-    if (i === 0) {
-      fi = f0;
-    } else if (i === 1) {
-      fi = f0 + f1;
-    } else {
-      fi = fi + fibArr[i - 2];
-    }
-    fibArr.push(fi);
+  for (let i = 2; i <= n; i++) {
+    const a = fibArr[i - 1];
+    const b = fibArr[i - 2];
+    fibArr.push(a + b);
   }
-  return fi;
+
+  return fibArr[n];
 }
 
 module.exports = fib;
