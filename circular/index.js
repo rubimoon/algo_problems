@@ -11,14 +11,11 @@
 //   b.next = c;
 //   c.next = b;
 //   circular(l) // true
+const s1 = require("./s1");
+const s2 = require("./s2");
 
 function circular(list) {
-  let nextArr = [];
-  for (const node of list) {
-    if (nextArr.includes(node.next)) return true;
-    nextArr.push(node.next);
-  }
-  return false;
+  return s2(list);
 }
 
 module.exports = circular;
