@@ -13,16 +13,18 @@
 //   midpoint(l); // returns { data: 'b' }
 
 function midpoint(list) {
-  if (!list) return null;
-  if (!list.getAt(1) || !list.getAt(2)) return list.getAt(0);
+  let i = list.getFirst();
+  if (!i) return null;
 
-  let slow = 0;
-  let fast = 0;
-  while (list.getAt(fast + 2)) {
-    slow = slow + 1;
-    fast = fast + 2;
+  if (!i.next || !i.next.next) return i;
+
+  let slow = i.next;
+  let fast = i.next.next;
+  while (fast.next?.next) {
+    slow = slow.next;
+    fast = fast.next.next;
   }
-  return list.getAt(slow);
+  return slow;
 }
 
 module.exports = midpoint;
