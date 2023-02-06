@@ -7,39 +7,11 @@
 //   anagrams('rail safety', 'fairy tales') --> True
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
+const s1 = require("./s1");
+const s2 = require("./s2");
 
 function anagrams(stringA, stringB) {
-  let isAnagram = true;
-  let longStr;
-  let shortStr;
-
-  function getCharMap(str) {
-    let map = {};
-    for (let c of str.toLowerCase()) {
-      if (c !== c.toUpperCase()) {
-        if (!map[c]) {
-          map[c] = 1;
-          continue;
-        }
-        map[c]++;
-      }
-    }
-    return map;
-  }
-
-  if (getCharMap(stringA) >= getCharMap(stringB)) {
-    longStr = getCharMap(stringA);
-    shortStr = getCharMap(stringB);
-  }
-  longStr = getCharMap(stringB);
-  shortStr = getCharMap(stringA);
-
-  for (const k in longStr) {
-    if (!isAnagram) break;
-    isAnagram = longStr[k] === shortStr[k];
-  }
-
-  return isAnagram;
+  return s2(stringA, stringB);
 }
 
 module.exports = anagrams;
