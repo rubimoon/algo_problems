@@ -9,40 +9,34 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  let objA = {};
-  let objB = {};
   let isAnagram = true;
+  let longStr;
+  let shortStr;
 
-  for (let c of stringA.toLowerCase()) {
-    if (c !== c.toUpperCase()) {
-      if (!objA[c]) {
-        objA[c] = 1;
-        continue;
+  function getCharMap(str) {
+    let map = {};
+    for (let c of str.toLowerCase()) {
+      if (c !== c.toUpperCase()) {
+        if (!map[c]) {
+          map[c] = 1;
+          continue;
+        }
+        map[c]++;
       }
-      objA[c]++;
     }
+    return map;
   }
 
-  for (let c of stringB.toLowerCase()) {
-    if (c !== c.toUpperCase()) {
-      if (!objB[c]) {
-        objB[c] = 1;
-        continue;
-      }
-      objB[c]++;
-    }
+  if (getCharMap(stringA) >= getCharMap(stringB)) {
+    longStr = getCharMap(stringA);
+    shortStr = getCharMap(stringB);
   }
+  longStr = getCharMap(stringB);
+  shortStr = getCharMap(stringA);
 
-  if (stringA.length >= stringB.length) {
-    for (const k in objA) {
-      isAnagram = objA[k] === objB[k];
-      if (!isAnagram) break;
-    }
-  } else {
-    for (const k in objB) {
-      isAnagram = objA[k] === objB[k];
-      if (!isAnagram) break;
-    }
+  for (const k in longStr) {
+    if (!isAnagram) break;
+    isAnagram = longStr[k] === shortStr[k];
   }
 
   return isAnagram;
