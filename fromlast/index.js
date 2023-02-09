@@ -19,7 +19,10 @@ function fromLast(list, n) {
   const theLast = list.getLast();
 
   // slowとfastは常にnこspaceを保つ
-  for (let i = 0; i < n; i++) fast = fast.next;
+  while (n > 0) {
+    fast = fast.next;
+    n--;
+  }
 
   //  fastでlastを探していく
   while (fast != theLast) {
