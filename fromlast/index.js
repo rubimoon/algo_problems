@@ -11,6 +11,22 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-function fromLast(list, n) {}
+// lastからnこspaceを歩く
+function fromLast(list, n) {
+  let slow = list.head;
+  let fast = list.head;
+  //まずlastの位置を把握しておく
+  const theLast = list.getLast();
+
+  // slowとfastは常にnこspaceを保つ
+  for (let i = 0; i < n; i++) fast = fast.next;
+
+  //  fastでlastを探していく
+  while (fast != theLast) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+  return slow;
+}
 
 module.exports = fromLast;
