@@ -16,40 +16,39 @@ const Stack = require("./stack");
 
 class Queue {
   constructor() {
-    this.stackOne = new Stack();
-    this.stackTwo = new Stack();
+    this.first = new Stack();
+    this.second = new Stack();
   }
   add(value) {
-    this.stackOne.push(value);
+    this.first.push(value);
   }
 
   peek() {
-    let result;
-    while (this.stackOne.data.length > 0) {
-      let ele = this.stackOne.pop();
-      this.stackTwo.push(ele);
-    }
-    result = this.stackTwo.peek();
-
-    while (this.stackTwo.data.length > 0) {
-      let ele = this.stackTwo.pop();
-      this.stackOne.push(ele);
+    while (this.first.peek()) {
+      let ele = this.first.pop();
+      this.second.push(ele);
     }
 
+    const result = this.second.peek();
+
+    while (this.second.peek()) {
+      let ele = this.second.pop();
+      this.first.push(ele);
+    }
     return result;
   }
 
   remove() {
-    let result;
-    while (this.stackOne.data.length > 0) {
-      let ele = this.stackOne.pop();
-      this.stackTwo.push(ele);
+    while (this.first.peek()) {
+      let ele = this.first.pop();
+      this.second.push(ele);
     }
-    result = this.stackTwo.pop();
 
-    while (this.stackTwo.data.length > 0) {
-      let ele = this.stackTwo.pop();
-      this.stackOne.push(ele);
+    const result = this.second.pop();
+
+    while (this.second.peek()) {
+      let ele = this.second.pop();
+      this.first.push(ele);
     }
     return result;
   }
